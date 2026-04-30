@@ -1,0 +1,33 @@
+@use "src/styles/vars";
+
+.posts {
+  max-width: 800px;
+  margin: vars.$gutter auto;
+
+  &-title {
+    color: vars.$primary-color;
+    font-family: vars.$title-font;
+    font-weight: vars.$title-font-weight;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+
+  .search {
+    margin-bottom: vars.$gutter;
+    font-size: 1em;
+    padding: 0.5em;
+    width: 100%;
+  }
+
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+// si le titre a un ancêtre avec la classe posts--zen alors il agrandit sa police
+.posts--zen .posts-title {
+  font-size: 3em;
+}

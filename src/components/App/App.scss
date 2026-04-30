@@ -1,0 +1,11 @@
+@use './../../styles/vars';
+
+.app {
+  font-family: vars.$global-font;
+  font-weight: vars.$global-font-weight;
+  background-color: vars.$light-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
