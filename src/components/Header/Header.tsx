@@ -6,6 +6,7 @@ interface HeaderProps {
   isZenModeEnabled: boolean
   changeZenMode: React.Dispatch<React.SetStateAction<boolean>>
   searchText: string
+  errorMessage: string
 }
 
 //Je récupère desormais searchText en tant que props
@@ -14,20 +15,28 @@ function Header({
   isZenModeEnabled,
   changeZenMode,
   searchText,
+  errorMessage,
 }: HeaderProps) {
   return (
     <header className="menu" id="header">
       <nav>
-        {categories.map((category) => (
-          // Ce qui me permet d'afficher une classe 'selected' conditionnelle  selon la recherche utilisateur
-          <a
-            className={`menu-link ${searchText.toLowerCase() === category.label.toLowerCase() && "selected"}`}
-            href={category.route}
-            key={category.label}
-          >
-            {category.label}
+        {errorMessage || categories.length < 1 ? (
+          <a className={`menu-link`} href="/">
+            Accueil
           </a>
-        ))}
+        ) : (
+          categories.map((category) => (
+            // Ce qui me permet d'afficher une classe 'selected' conditionnelle  selon la recherche utilisateur
+            <a
+              className={`menu-link ${searchText.toLowerCase() === category.label.toLowerCase() && "selected"}`}
+              href={category.route}
+              key={category.label}
+            >
+              {category.label}
+            </a>
+          ))
+        )}
+
         <button
           className="menu-btn"
           type="button"
